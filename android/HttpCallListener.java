@@ -3,8 +3,8 @@ package com.hacker.haohao.http.utils;
 
 /**
  * HttpURLConnection 调用监听
- * @author ZhangHaoHao
- * Time 2016年7月3日11:39:09
+ * @author ZhangHaoHao 2016年7月3日11:39:09
+ * @version 1.0
  */
 public interface HttpCallListener {
 

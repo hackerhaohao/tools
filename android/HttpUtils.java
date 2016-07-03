@@ -17,7 +17,7 @@ import org.apache.http.util.EntityUtils;
 /**
  * 访问网络工具类,
  * @author ZhangHao
- *
+ * @version 1.0
  */
 public class HttpUtils {
 
