@@ -1,7 +1,15 @@
 package com.hacker.haohao.http.utils;
 
+import java.io.IOException;
 import java.io.StringReader;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
@@ -11,6 +19,9 @@ import org.xmlpull.v1.XmlPullParserFactory;
  * @version 1.0
  */
 public class XmlUtils {
+	/**
+	 * @param xml
+	 */
 	public static void praseXmlWithPull(final String xml){
 		try {
 			XmlPullParserFactory xmlPullParserFactory = XmlPullParserFactory.newInstance();
@@ -39,6 +50,26 @@ public class XmlUtils {
 				eventType = xmlPullParser.next();
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	/**
+	 * 
+	 * @param xml
+	 */
+	public static void praseXmlWithSax(final String xml){
+		try {
+			SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
+			SAXParser saxParser = saxParserFactory.newSAXParser();
+			XMLReader xmlReader = saxParser.getXMLReader();
+			ContentHandler handler = new ContentHandler();
+			//将ContentHandler的实例设置到xmlReader
+			xmlReader.setContentHandler(handler );
+			//开始解析
+			xmlReader.parse(new InputSource(new StringReader(xml)));
+		} catch (ParserConfigurationException | SAXException | IOException e) {
 			e.printStackTrace();
 		}
 	}
